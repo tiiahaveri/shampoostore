@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<title>Edit product</title>
+</head>
+<body>
+<form action="#" id="myform" th:action="@{/saveproduct}" th:object="${product}" method="post">
+<h1>Muokkaa tietoja</h1>
+<table>
+	
+		<tr>
+		<td><input type="hidden" id="id"  th:field="*{productid}" readonly="readonly"/></td>
+		
+			</tr>
+			
+			<tr>
+			
+		<td><label for="productname">Tuotteen nimi</label></td>
+		<td><input type="text" th:field="*{productname}" id="productname" placeholder="Nimi"></td>
+		<td><span th:if="${#fields.hasErrors('productname')}" th:errors="*{productname}"></span></td>
+
+		</tr>
+		
+		<tr>
+
+	<td><label for="description">Kuvaus</label></td>
+	<td><textarea th:field="*{description}" id="description" form="myform" placeholder="Kuvaus" rows="4" cols="60"></textarea></td>
+	<td><span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span></td>
+		
+		</tr>
+		
+		<tr>
+
+	<td><label for="sellingprice">Myyntihinta</label></td>
+	<td><input type="text" th:field="*{sellingprice}" id="sellingprice" placeholder="Myyntihinta anna muodossa: 1.0"></td>
+	<td><span th:if="${#fields.hasErrors('sellingprice')}" th:errors="*{sellingprice}"></span></td>
+
+		</tr>
+		
+		<tr>
+		
+	<td><label for="buyingprice">Ostohinta</label></td>
+	<td><input type="text" th:field="*{buyingprice}" id="buyingprice" placeholder="Ostohinta"></td>
+	<td><span th:if="${#fields.hasErrors('buyingprice')}" th:errors="*{buyingprice}"></span></td>
+		
+		</tr>
+		<tr>
+
+	<td><label for="categorylist">Kategoria</label></td>
+	<td><select id="categorylist" th:field="*{category}" class="form-control">
+	<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.categoryName}"></option>
+	</select></td>
+	
+		</tr>
+	
+		
+		<tr>
+	<td><input type="submit" class="btn btn-primary" value="Tallenna muutokset"></td>
+</table>
+</form>
+
+</body>
+</html>
