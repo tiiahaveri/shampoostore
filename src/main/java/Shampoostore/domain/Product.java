@@ -28,12 +28,12 @@ public class Product {
 	@Size(min=10, max=150, message="Kuvauksessa oltava vähintään 10 merkkiä")
 	private String description;
 	
-	@Positive
+	
 	@NotNull(message="Tuotteella oltava hinta")
 	@DecimalMin(value="0.1", message="Tuotteen myyntihinta oltava enemmän kuin 0")
 	private double sellingprice;
 	
-	@Positive
+	
 	@DecimalMin(value="0.1", message="Tuotteen ostohinta oltava enemmän kuin 0")
 	private double buyingprice;
 	

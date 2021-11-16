@@ -11,9 +11,22 @@
 <div class="col-md-4">
 		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
 	</div>
-<form th:action="@{/logout}" method="post">
+
+<table>
+<tr>
+<td sec:authorize="isAuthenticated()">
+<form th:action="@{/logout}" method="post" >
 <input type="submit" class="btn btn-danger btn-sm" value="Sign out" />
+</form></td>
+
+<td sec:authorize="isAnonymous()">
+<form th:action ="@{/login}" method="post">
+<input type="submit" class="btn btn-success btn-sm" value="Log in to see more info"/>
 </form>
+</td>
+</tr>
+</table>
+
 <h1>Shampoostoren tuotteet</h1>
 
 <table class="table">
@@ -45,9 +58,15 @@
 			
 			</tbody>
 			</table>
-			<form action="/addproduct"><button  class="btn btn-primary" type="submit">Lisää uusi tuote</button></form>
-			<br>
-			 <form action="/categorylist"><button class="btn btn-info" type="submit">Lisää uusi kategoria</button></form>
-
+			<table>
+		<tr>
+		<td sec:authorize="isAuthenticated()">
+			<form action="/addproduct"><button  class="btn btn-primary" type="submit">Lisää uusi tuote</button></form></td>
+			
+		
+	 <td sec:authorize="isAuthenticated()">
+	 		<form action="/categorylist"><button class="btn btn-info" type="submit">Lisää uusi kategoria</button></form></td>
+</tr>
+</table>
 </body>
 </html>
