@@ -26,6 +26,11 @@ public class ProductController {
 	@Autowired 
 	private CategoryRepository crepository;
 	
+	@GetMapping("/")
+	public String startPage() {
+		
+		return "redirect:/productlist";
+	}
 	
 	//haetaan kaikki tuotteet
 	@GetMapping("/productlist")

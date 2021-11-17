@@ -31,12 +31,14 @@ import Shampoostore.web.UserDetailServiceImpl;
 	        .and()
 	        .authorizeRequests().anyRequest().authenticated()
 	        .and()
+	        
 	      .formLogin()
 	          .defaultSuccessUrl("/productlist", true)
 	          .permitAll()
 	          .and()
 	      .logout()
 	          .permitAll();
+	       
 	    }
 
 
