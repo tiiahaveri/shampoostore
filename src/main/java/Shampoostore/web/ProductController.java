@@ -43,7 +43,7 @@ public class ProductController {
 	public String addProduct(Model model) {
 		model.addAttribute("product", new Product());
 		model.addAttribute("categories", crepository.findAll());
-		return "/addproduct";
+		return "addproduct";
 	}
 	//uuden tuotteen tallennuslomake
 	@PostMapping("/saveproduct")
